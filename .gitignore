@@ -6,4 +6,5 @@ data/
 
 # Logs
 log_download_static.txt
+load_log.txt
 log.txt

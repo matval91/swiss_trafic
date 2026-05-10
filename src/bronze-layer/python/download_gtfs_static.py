@@ -23,9 +23,10 @@ from bs4 import BeautifulSoup
 DATASET_URL = "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020"
 # Internal CKAN dataset UUID (stable, embedded in every download link).
 DATASET_UUID = "3d2c18f9-9ef1-463f-a249-5c67604efd74"
-_HERE = Path(__file__).parent.parent
-DATA_DIR = _HERE / "data" / "gtfs-static"
-LOG_FILE = _HERE / "log_download_static.txt"
+_HERE = Path(__file__).parent            # src/bronze-layer/python/
+_REPO_ROOT = _HERE.parent.parent.parent  # repo root
+DATA_DIR = _REPO_ROOT / "data" / "gtfs-static"
+LOG_FILE = _REPO_ROOT / "log_download_static.txt"
 MAX_FILES = 5          # Set to None to download all available files.
 CHUNK_SIZE = 1024 * 1024  # 1 MB read chunks during download.
 REQUEST_TIMEOUT = 30   # seconds

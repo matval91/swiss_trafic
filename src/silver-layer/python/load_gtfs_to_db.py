@@ -30,11 +30,12 @@ from dotenv import load_dotenv
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-_HERE = Path(__file__).parent
-load_dotenv(_HERE / ".env")
+_HERE = Path(__file__).parent          # src/silver-layer/python/
+_REPO_ROOT = _HERE.parent.parent.parent  # repo root
+load_dotenv(_REPO_ROOT / "infra" / ".env")
 
-BRONZE_DATA_DIR = _HERE.parent / "data" / "gtfs-static"
-LOG_FILE = _HERE / "load_log.txt"
+BRONZE_DATA_DIR = _REPO_ROOT / "data" / "gtfs-static"
+LOG_FILE = _REPO_ROOT / "load_log.txt"
 BATCH_SIZE = 50_000   # rows per execute_values call
 
 # ---------------------------------------------------------------------------
