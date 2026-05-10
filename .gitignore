@@ -1,0 +1,9 @@
+# Environment files
+.env
+
+# Data downloads
+data/
+
+# Logs
+log_download_static.txt
+log.txt
