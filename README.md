@@ -25,6 +25,9 @@ Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+```bash
+conda env create -n swiss-trafic --file environment.yml
+```
 
 ---
 
@@ -60,7 +63,7 @@ data/
 ### Usage
 
 ```bash
-python bronze-layer/download_gtfs_static.py
+python ./src/bronze-layer/python/download_gtfs_static.py
 ```
 
 - Already-downloaded files are skipped automatically.
