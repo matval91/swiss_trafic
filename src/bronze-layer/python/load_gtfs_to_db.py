@@ -196,7 +196,8 @@ def get_conn() -> psycopg2.extensions.connection:
         # port=int(os.getenv("POSTGRES_PORT", 5432)),
         # dbname=os.getenv("POSTGRES_DB", "swiss_trafic"),
         # user=os.getenv("POSTGRES_USER", "gtfs"),
-        # password=os.getenv("POSTGRES_PASSWORD", ""),
+        # password=os.getenv("POSTGRES_PASSWORD", "")
+        sslmode="require"
     )
 
 
