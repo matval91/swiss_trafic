@@ -396,8 +396,11 @@ def load_zip(zip_path: Path) -> None:
         conn.commit()
         log.info("Successfully loaded %s", zip_path.name)
 
-    except Exception as exc:
-        conn.rollback()
+    except Exception as exc: 
+        try:
+            conn.rollback()
+        except Exception:
+            pass
         log.error("FAILED to load %s: %s", zip_path.name, exc, exc_info=True)
         raise
     finally:
