@@ -191,7 +191,7 @@ FEED_INFO_SPEC = [
 # ---------------------------------------------------------------------------
 def get_conn() -> psycopg2.extensions.connection:
     return psycopg2.connect(
-        os.environ["DATABASE_URL"]
+        os.environ["DATABASE_URL"],
         # host=os.getenv("POSTGRES_HOST", "localhost"),
         # port=int(os.getenv("POSTGRES_PORT", 5432)),
         # dbname=os.getenv("POSTGRES_DB", "swiss_trafic"),
