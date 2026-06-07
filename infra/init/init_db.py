@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import psycopg2
 
-SQL_FILE = Path(__file__).parent / "init" / "01_schema.sql"
+SQL_FILE = Path(__file__).parent / "01_schema.sql"
 
 def main():
     database_url = os.environ["DATABASE_URL"]
