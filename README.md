@@ -72,7 +72,7 @@ python ./src/bronze-layer/python/download_gtfs_static.py
 
 ---
 
-## Silver Layer — PostgreSQL + PostGIS database
+## Bronze Layer — PostgreSQL + PostGIS database
 
 **Directory:** `silver-layer/`
 
@@ -97,7 +97,7 @@ All tables live in the `gtfs` schema. Every table includes a `feed_date` column 
 | `gtfs.feed_info` | `feed_info.txt` | Optional |
 | `gtfs.feed_loads` | — | Tracks which feeds have been loaded |
 
-### Setup
+### Setup - run DB on your laptop
 
 **1. Configure credentials**
 
@@ -129,6 +129,17 @@ python silver-layer/load_gtfs_to_db.py data/gtfs-static/202605/GTFS_FP2026_20260
 - Already-loaded feeds are skipped based on the `gtfs.feed_loads` table.
 - Point and linestring geometries are built with PostGIS after each feed is inserted.
 - Load activity is logged to `silver-layer/load_log.txt`.
+
+### Setup - run DB on Render
+**1. Copy your environment variables in a CRON job on Render**
+**2. Setup the job to create the DB**
+```bash
+python ./infra/init/init_db.py
+```
+**3. Setup the job to load data**
+```bash
+python src/bronze-layer/python/download_gtfs_static.py && python src/bronze-layer/python/load_gtfs_to_db.py
+```
 
 ---
 
