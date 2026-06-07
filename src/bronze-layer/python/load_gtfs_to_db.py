@@ -373,10 +373,11 @@ def load_zip(zip_path: Path) -> None:
             rows["transfers"]      = load_table(conn, zf, "transfers.txt",      "staging_gtfs_static.transfers",      TRANSFERS_SPEC,      feed_date, required=False)
             rows["feed_info"]      = load_table(conn, zf, "feed_info.txt",      "staging_gtfs_static.feed_info",      FEED_INFO_SPEC,      feed_date, required=False)
 
+        # This will be moved to the silver layer in the future
         # Geometry post-processing (outside the ZipFile context)
-        build_stop_geometries(conn, feed_date)
-        if rows.get("shapes", 0) > 0:
-            build_shape_geometries(conn, feed_date)
+        # build_stop_geometries(conn, feed_date)
+        # if rows.get("shapes", 0) > 0:
+        #     build_shape_geometries(conn, feed_date)
 
         # Record successful load
         with conn.cursor() as cur:
