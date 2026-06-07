@@ -197,7 +197,12 @@ def get_conn() -> psycopg2.extensions.connection:
         # dbname=os.getenv("POSTGRES_DB", "swiss_trafic"),
         # user=os.getenv("POSTGRES_USER", "gtfs"),
         # password=os.getenv("POSTGRES_PASSWORD", "")
-        sslmode="require"
+        sslmode="require",
+        connect_timeout=15,
+        keepalives=1,
+        keepalives_idle=30,
+        keepalives_interval=10,
+        keepalives_count=5
     )
 
 
