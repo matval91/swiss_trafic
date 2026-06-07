@@ -1,5 +1,5 @@
 # Environment files
-.env
+*.env
 
 # Data downloads
 data/
