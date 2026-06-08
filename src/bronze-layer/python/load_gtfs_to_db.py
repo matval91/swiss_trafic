@@ -36,7 +36,7 @@ load_dotenv(_REPO_ROOT / "infra" / ".env")
 
 BRONZE_DATA_DIR = _REPO_ROOT / "data" / "gtfs-static"
 LOG_FILE = _REPO_ROOT / "load_log.txt"
-BATCH_SIZE = 50_000   # rows per execute_values call
+BATCH_SIZE = 20000 # rows per execute_values call
 
 # ---------------------------------------------------------------------------
 # Logging
