@@ -24,7 +24,8 @@ from datetime import date
 from pathlib import Path
 
 import psycopg2
-import psycopg2.extras
+from psycopg2 import sql
+# import psycopg2.extras
 from dotenv import load_dotenv
 
 # ---------------------------------------------------------------------------
@@ -262,16 +263,30 @@ def _make_tuple(row: dict, spec: list, feed_date: date) -> tuple:
             values.append(default)
     return tuple(values)
 
-
 def _flush_batch(conn, table: str, spec: list, batch: list) -> None:
-    cols = ["feed_date"] + [col for col, _, _ in spec]
-    psycopg2.extras.execute_values(
-        conn.cursor(),
-        f"INSERT INTO {table} ({', '.join(cols)}) VALUES %s ON CONFLICT DO NOTHING",
-        batch,
-        page_size=BATCH_SIZE,
-    )
+    if not batch:
+        return
 
+    cols = ["feed_date"] + [col for col, _, _ in spec]
+
+    buf = io.StringIO()
+    writer = csv.writer(buf, lineterminator="\n")
+
+    for row in batch:
+        writer.writerow(["\\N" if v is None else v for v in row])
+
+    buf.seek(0)
+
+    table_sql = sql.SQL(".").join(map(sql.Identifier, table.split(".")))
+
+    with conn.cursor() as cur:
+        copy_sql = sql.SQL(
+            "COPY {} ({}) FROM STDIN WITH (FORMAT CSV, NULL '\\N')"
+        ).format(
+            table_sql,
+            sql.SQL(", ").join(sql.Identifier(c) for c in cols),
+        )
+        cur.copy_expert(copy_sql.as_string(conn), buf)
 
 def load_table(
     conn,
