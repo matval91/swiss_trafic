@@ -27,7 +27,7 @@ _HERE = Path(__file__).parent            # src/bronze-layer/python/
 _REPO_ROOT = _HERE.parent.parent.parent  # repo root
 DATA_DIR = _REPO_ROOT / "data" / "gtfs-static"
 LOG_FILE = _REPO_ROOT / "log_download_static.txt"
-MAX_FILES = 5          # Set to None to download all available files.
+MAX_FILES = 1          # Set to None to download all available files.
 CHUNK_SIZE = 1024 * 1024  # 1 MB read chunks during download.
 REQUEST_TIMEOUT = 30   # seconds
 
