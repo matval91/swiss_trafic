@@ -383,17 +383,17 @@ def load_zip(zip_path: Path) -> None:
 
             # Required files
             rows["agency"]         = load_table(conn, zf, "agency.txt",         "staging_gtfs_static.agency",         AGENCY_SPEC,         feed_date, required=True)
-            rows["stops"]          = load_table(conn, zf, "stops.txt",          "staging_gtfs_static.stops",          STOPS_SPEC,          feed_date, required=True)
-            rows["routes"]         = load_table(conn, zf, "routes.txt",         "staging_gtfs_static.routes",         ROUTES_SPEC,         feed_date, required=True)
-            rows["trips"]          = load_table(conn, zf, "trips.txt",          "staging_gtfs_static.trips",          TRIPS_SPEC,          feed_date, required=True)
-            rows["stop_times"]     = load_table(conn, zf, "stop_times.txt",     "staging_gtfs_static.stop_times",     STOP_TIMES_SPEC,     feed_date, required=True)
+            # rows["stops"]          = load_table(conn, zf, "stops.txt",          "staging_gtfs_static.stops",          STOPS_SPEC,          feed_date, required=True)
+            # rows["routes"]         = load_table(conn, zf, "routes.txt",         "staging_gtfs_static.routes",         ROUTES_SPEC,         feed_date, required=True)
+            # rows["trips"]          = load_table(conn, zf, "trips.txt",          "staging_gtfs_static.trips",          TRIPS_SPEC,          feed_date, required=True)
+            # rows["stop_times"]     = load_table(conn, zf, "stop_times.txt",     "staging_gtfs_static.stop_times",     STOP_TIMES_SPEC,     feed_date, required=True)
 
-            # Optional files
-            rows["calendar"]       = load_table(conn, zf, "calendar.txt",       "staging_gtfs_static.calendar",       CALENDAR_SPEC,       feed_date, required=False)
-            rows["calendar_dates"] = load_table(conn, zf, "calendar_dates.txt", "staging_gtfs_static.calendar_dates", CALENDAR_DATES_SPEC, feed_date, required=False)
-            rows["shapes"]         = load_table(conn, zf, "shapes.txt",         "staging_gtfs_static.shapes",         SHAPES_SPEC,         feed_date, required=False)
-            rows["transfers"]      = load_table(conn, zf, "transfers.txt",      "staging_gtfs_static.transfers",      TRANSFERS_SPEC,      feed_date, required=False)
-            rows["feed_info"]      = load_table(conn, zf, "feed_info.txt",      "staging_gtfs_static.feed_info",      FEED_INFO_SPEC,      feed_date, required=False)
+            # # Optional files
+            # rows["calendar"]       = load_table(conn, zf, "calendar.txt",       "staging_gtfs_static.calendar",       CALENDAR_SPEC,       feed_date, required=False)
+            # rows["calendar_dates"] = load_table(conn, zf, "calendar_dates.txt", "staging_gtfs_static.calendar_dates", CALENDAR_DATES_SPEC, feed_date, required=False)
+            # rows["shapes"]         = load_table(conn, zf, "shapes.txt",         "staging_gtfs_static.shapes",         SHAPES_SPEC,         feed_date, required=False)
+            # rows["transfers"]      = load_table(conn, zf, "transfers.txt",      "staging_gtfs_static.transfers",      TRANSFERS_SPEC,      feed_date, required=False)
+            # rows["feed_info"]      = load_table(conn, zf, "feed_info.txt",      "staging_gtfs_static.feed_info",      FEED_INFO_SPEC,      feed_date, required=False)
 
         # This will be moved to the silver layer in the future
         # Geometry post-processing (outside the ZipFile context)
