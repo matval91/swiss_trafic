@@ -383,8 +383,8 @@ def load_zip(zip_path: Path) -> None:
 
             # Required files
             rows["agency"]         = load_table(conn, zf, "agency.txt",         "staging_gtfs_static.agency",         AGENCY_SPEC,         feed_date, required=True)
-            # rows["stops"]          = load_table(conn, zf, "stops.txt",          "staging_gtfs_static.stops",          STOPS_SPEC,          feed_date, required=True)
-            # rows["routes"]         = load_table(conn, zf, "routes.txt",         "staging_gtfs_static.routes",         ROUTES_SPEC,         feed_date, required=True)
+            rows["stops"]          = load_table(conn, zf, "stops.txt",          "staging_gtfs_static.stops",          STOPS_SPEC,          feed_date, required=True)
+            rows["routes"]         = load_table(conn, zf, "routes.txt",         "staging_gtfs_static.routes",         ROUTES_SPEC,         feed_date, required=True)
             # rows["trips"]          = load_table(conn, zf, "trips.txt",          "staging_gtfs_static.trips",          TRIPS_SPEC,          feed_date, required=True)
             # rows["stop_times"]     = load_table(conn, zf, "stop_times.txt",     "staging_gtfs_static.stop_times",     STOP_TIMES_SPEC,     feed_date, required=True)
 
