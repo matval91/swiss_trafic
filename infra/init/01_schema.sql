@@ -1,7 +1,9 @@
 -- PostGIS is pre-installed by the postgis/postgis image; ensure it exists.
-CREATE EXTENSION IF NOT EXISTS postgis;
 
 CREATE SCHEMA IF NOT EXISTS staging_gtfs_static;
+
+USE SCHEMA staging_gtfs_static;
+CREATE EXTENSION IF NOT EXISTS postgis;
 
 -- ---------------------------------------------------------------------------
 -- Feed load tracking
