@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS staging_gtfs_static.stops (
     parent_station        TEXT,
     stop_timezone         TEXT,
     wheelchair_boarding   SMALLINT,
-    -- geom                  GEOMETRY(Point, 4326),   -- populated after insert
+    geom                  GEOMETRY(Point, 4326),   -- populated after insert
     PRIMARY KEY (feed_date, stop_id)
 );
 CREATE INDEX IF NOT EXISTS stops_geom_idx ON staging_gtfs_static.stops USING GIST (geom);
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS staging_gtfs_static.shapes (
 CREATE TABLE IF NOT EXISTS staging_gtfs_static.shape_geoms (
     feed_date  DATE NOT NULL,
     shape_id   TEXT NOT NULL,
-    -- geom       GEOMETRY(LineString, 4326) NOT NULL,
+    geom       GEOMETRY(LineString, 4326) NOT NULL,
     PRIMARY KEY (feed_date, shape_id)
 );
 CREATE INDEX IF NOT EXISTS shape_geoms_geom_idx ON staging_gtfs_static.shape_geoms USING GIST (geom);
